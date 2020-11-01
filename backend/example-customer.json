@@ -1,0 +1,8 @@
+{
+    "firstName": "Jane",
+    "lastName": "Merchant",
+    "email": "jmerchant@nomail.net",
+    "type": "receive-only",
+    "businessName": "Jane Corp llc",
+    "ipAddress": "99.99.99.99"
+}
