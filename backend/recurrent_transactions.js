@@ -46,6 +46,14 @@ app.get('/link_token/:id', (req, res) => {
     }).then(({ link_token }) => res.send({ link_token })).catch(res.send)
 })
 
+app.post('/exchange', (req, res) => {
+    const { token, account_id } = req.body
+    pClient.exchangePublicToken(token)
+        .then(({ access_token }) => pClient.createProcessorToken(access_token, account_id, 'dwolla'))
+        .then(({ processor_token }) => res.send({ processor_token }))
+        .catch(res.send)
+})
+
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
