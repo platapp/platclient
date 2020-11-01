@@ -7,7 +7,7 @@ import '../bottom_nav.dart';
 /// A [StatelessWidget] which reacts to the provided
 /// [CounterCubit] state and notifies it in response to user input.
 /// {@endtemplate}
-class ButtomNavView extends StatelessWidget {
+class BottomNavView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<BottomNavCubit, int>(builder: (context, state) {
