@@ -32,11 +32,9 @@ class TransactionsPage extends StatelessWidget {
             if (state is TransactionsInitial) {
               return Center(
                   child: Text('I need to fix this to load automatically'));
-            }
-            if (state is TransactionsLoadInProgress) {
+            } else if (state is TransactionsLoadInProgress) {
               return Center(child: CircularProgressIndicator());
-            }
-            if (state is TransactionsLoadSuccess) {
+            } else if (state is TransactionsLoadSuccess) {
               final transactions = state.transactions;
               return DataTable(
                   columns: const <DataColumn>[
@@ -69,15 +67,16 @@ class TransactionsPage extends StatelessWidget {
                           DataCell(Text(transaction.id)),
                           DataCell(Text(transaction.amount)),
                           DataCell(Text(transaction.dueDate)),
-                          //DataCell(Text(transaction.isIncluded)),
                         ]);
                   }).toList());
-            }
-            if (state is PaydayLoadFailure) {
+            } else if (state is TransactionsLoadFailure) {
               return Text(
-                'Something went wrong!',
+                state.message,
                 style: TextStyle(color: Colors.red),
               );
+            } else {
+              print(state);
+              return Text("Something went very bizarre should never get here");
             }
           },
         ),
